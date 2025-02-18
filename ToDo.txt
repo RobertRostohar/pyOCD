@@ -1,0 +1,23 @@
+Modules:
+
+  - target/pack
+    - pack_target
+      - class _PackTargetMethods
+        - def _pack_target_add_target_command_groups
+    - cbuild_run
+      - class CbuildRun
+        - populate_target: add_target_command_groups?
+    - reset_sequence_maps (Reset types SW?)
+
+  - target/pack/flash_algo
+    def get_pyocd_flash_algo: single buffer no check for stack end
+  - target/pack/flm_region_builder
+    def finalise_region: page_size <= 32 -> page = smallest sector
+
+Flash:
+  programming:
+    - algorithm: C:/Arm/Packs/Infineon/T2G-B-E_DFP/1.0.0/Flash/CYT2BL.FLM
+      start: 0x10000000
+      size: 0x00410000
+      ram-start: 0x20000000
+      ram-size: 0x00008000
