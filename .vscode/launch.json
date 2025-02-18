@@ -1,0 +1,45 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python Debugger: Remote Attach",
+            "type": "debugpy",
+            "request": "attach",
+            "connect": {
+                "host": "localhost",
+                "port": 5678
+            },
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}",
+                    "remoteRoot": "${workspaceFolder}"
+                }
+            ]
+        },
+        {
+            "name": "Python Debugger: pyocd",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "pyocd.__main__",
+            // "cwd": "${workspaceFolder}",
+            "stopOnEntry": false,
+            "args": [
+                // "gdbserver",
+                // "load", "<image>",
+                // "--port", "3333",
+                // "--target", "<target_name>",
+                // "--core", "0",
+                // "-Oprimary_core=1",
+                // "-Oenable_multicore_debug=true",
+                // "-Osmart_flash=false",
+                // "--pack", "<path to pack>",
+                // "--cbuild-run", "<path to cbuild-run>",
+                // "-v",
+                // "-L", "pyocd.coresight.ap=debug",
+                // "-L", "pyocd.probe.cmsis_dap_probe.trace=debug",
+                // "-L", "pyocd.debug.sequences.functions=info"
+                // "-L", "pyocd.probe.flash.trace=debug"
+            ]
+        }
+    ]
+}

@@ -24,6 +24,7 @@ import logging
 import argparse
 import colorama
 import fnmatch
+import debugpy
 from typing import (Any, Optional, Sequence)
 
 from . import __version__
@@ -185,6 +186,8 @@ class PyOCDTool(SubcommandBase):
                 name=info.name, typename=typename, help=info.help))
 
 def main():
+    debugpy.listen(5678)
+    debugpy.wait_for_client()
     sys.exit(PyOCDTool().run())
 
 if __name__ == '__main__':
