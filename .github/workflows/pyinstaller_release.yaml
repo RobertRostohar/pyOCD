@@ -1,0 +1,27 @@
+name: Create Release 
+
+on:
+  release:
+    types: [prereleased]
+    branch: cbuild-run-dev
+
+jobs:
+  trigger-reusable:
+    uses: your-org/your-repo/.github/workflows/reusable-workflow.yml@${{github.ref_name}}
+    with:
+      example-input: "test"
+      version: ${{ github.event.release.tag_name }}
+    secrets:
+      ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
+  retrieve-artifacts:
+    needs: trigger-reusable
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: pyocd-artifact
+            
+      - name: List files
+        run: ls -l
